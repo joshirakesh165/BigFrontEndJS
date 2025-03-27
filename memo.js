@@ -2,11 +2,11 @@ function memo(func, resolver) {
     let cache = {};
 
     return function () {
-        let arsArr = [...arguments]
-        let key = resolver ?  resolver.apply(null,arsArr) : arsArr.join('_')
+        let argsArr = [...arguments]
+        let key = resolver ?  resolver.apply(null,argsArr) : arsArr.join('_')
         let resultFromCache = cache[key];
         if (resultFromCache) return resultFromCache;
-        let result = func.apply(this, arsArr);
+        let result = func.apply(this, argsArr);
         cache[key] = result;
         return result;
     }
